@@ -1,0 +1,12 @@
+# CODEOWNERS — define quem é atribuído automaticamente como revisor dos PRs.
+#
+# A regra abaixo está COMENTADA de propósito: o template não sabe qual é o seu
+# usuário do GitHub. Descomente e troque SEU-USUARIO pelo seu nome de usuário
+# para ativar a atribuição automática.
+#
+# Exemplo:
+#   * @SEU-USUARIO
+#
+# Em projetos maiores, você pode dividir por pasta:
+#   src/auth/   @time-de-seguranca
+#   docs/       @time-de-conteudo

@@ -1,0 +1,41 @@
+[project]
+name = "tqs-2026"
+version = "0.1.0"
+description = "Projeto-exemplo da disciplina Teste e Qualidade de Software (PC010027) - UFOPA"
+authors = [{ name = "Helvecio Bezerra Leal Neto" }]
+license = { text = "MIT" }
+requires-python = ">=3.11"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["docs", ".venv"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+    "SIM", # flake8-simplify
+]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = "-ra --strict-markers"
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.coverage.run]
+source = ["src"]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == .__main__.:",
+]
+show_missing = true
+skip_covered = false

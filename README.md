@@ -31,29 +31,21 @@ A ideia é que você **leia e execute cada capítulo em ordem**, terminando com 
 
 ---
 
-## ⚡ Quick start
+## ⚡ Quick start (GitHub Codespaces)
 
-Você tem **três caminhos** para acompanhar este livro (detalhes no [capítulo 2](capitulos/02-preparando-ambiente.md#21-três-caminhos-possíveis)):
+Esta disciplina usa **GitHub Codespaces** como ambiente único — zero instalação, tudo no navegador. O [capítulo 2](capitulos/02-preparando-ambiente.md) cobre o setup em detalhes.
 
-| Caminho | Como | Para quem |
-|---|---|---|
-| **A** — Navegador puro | Edite tudo em [github.com](https://github.com) (aperta `.` para abrir VS Code web) | Sem instalar nada, qualquer SO |
-| **B** — GitHub Codespaces ⭐ | Botão **Code → Codespaces → Create codespace** no repo | **Recomendado para a aula** — zero instalação local, ambiente completo |
-| **C** — Instalação local | Comandos abaixo | Mais rápido para iterar, funciona offline |
-
-### Caminho C — local (Linux/Mac)
+1. **Fork** este repositório (ou crie o seu seguindo o capítulo 2).
+2. No seu repo, clique em **Code** → aba **Codespaces** → **Create codespace on main**.
+3. Aguarde ~1 minuto. O VS Code abre no navegador com tudo instalado (Python 3.11, dependências, extensões).
+4. No terminal do Codespace:
 
 ```bash
-git clone https://github.com/SEU-USUARIO/tqs-2026.git
-cd tqs-2026
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements-dev.txt
-
 pytest                              # 6 testes, 82% cobertura
-flask --app src.app run             # http://localhost:5000
+flask --app src.app run             # porta 5000 será exposta automaticamente
 ```
 
-No **Windows**, troque a linha do venv por `python -m venv .venv && .venv\Scripts\activate`.
+> Trabalhar localmente (com Python instalado) ou pelo github.dev (navegador sem terminal) também funciona, mas não vamos cobrir — padronizamos em Codespaces.
 
 ### Verificações que o CI roda (antes de cada commit)
 
@@ -70,7 +62,7 @@ pytest --cov=src --cov-fail-under=80
 ```
 tqs-2026/
 ├── .devcontainer/
-│   └── devcontainer.json           # config GitHub Codespaces (Caminho B)
+│   └── devcontainer.json           # config GitHub Codespaces
 ├── .github/
 │   ├── workflows/
 │   │   ├── ci.yml                  # lint + testes + cobertura

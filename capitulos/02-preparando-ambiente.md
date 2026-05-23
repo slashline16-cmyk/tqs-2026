@@ -4,182 +4,165 @@
 
 ---
 
-Antes de escrever uma linha de código, você precisa escolher **como** vai trabalhar. Este capítulo apresenta **três caminhos possíveis** e ajuda você a decidir o melhor para o seu equipamento e perfil. Depois cobre **como criar o repositório** e **a estrutura do projeto**.
+Nesta disciplina vamos trabalhar **inteiramente pelo navegador**, usando o **GitHub Codespaces** — um ambiente Linux completo, com Python, Git e VS Code, rodando na nuvem da Microsoft. Você não vai instalar nada na sua máquina.
 
-## 2.1. Três caminhos possíveis
+> 💡 **E se eu quiser usar outra forma?** Você poderia trabalhar **localmente** (instalando Python, Git e uma IDE) ou usar o **github.dev** (VS Code no navegador, sem terminal e sem execução). Ambas são possíveis, mas não vamos cobrir nesta disciplina. **Padronizar em Codespaces** evita problemas de "no meu computador funciona" e garante que todos os alunos têm o mesmo ambiente.
 
-| Caminho | Como funciona | Vantagens | Limitações |
-|---|---|---|---|
-| **A — Navegador puro** | Edita arquivos no [github.com](https://github.com) ou [github.dev](https://github.dev) (basta apertar `.` no repo). Commit pela interface web. CI valida tudo. | ✅ Zero instalação<br>✅ Funciona em qualquer SO (Windows, Mac, Linux, ChromeOS, tablet) | ❌ Não roda testes nem Flask localmente — depende do CI<br>❌ Sem terminal |
-| **B — GitHub Codespaces** ⭐ | Ambiente Linux completo no navegador, com terminal, VS Code e Python já instalados. Free tier: 120 horas/mês. | ✅ Zero instalação local<br>✅ Mesma experiência de um Linux/Mac<br>✅ Roda tudo na nuvem | ❌ Consome horas do free tier<br>❌ Precisa de internet estável |
-| **C — Instalação local** | Você instala Git, Python, IDE no seu computador e roda tudo localmente. | ✅ Mais rápido para iterar<br>✅ Funciona offline<br>✅ Sem cota | ❌ Comandos diferentes por SO<br>❌ Pode ter atrito na instalação |
+## 2.1. Pré-requisitos
 
-> 💡 **Recomendação para a aula**: comece pelo **Caminho B (Codespaces)**. Ele dá a experiência completa sem cobrar de você nenhuma instalação, e funciona igual em qualquer máquina. Depois, se quiser, migra para o Caminho C.
+Para acompanhar esta aula você precisa apenas de:
 
-## 2.2. Pré-requisitos por caminho
+- Uma conta no [GitHub](https://github.com/signup) (gratuita)
+- Um navegador moderno (Chrome, Edge, Firefox, Safari)
+- Conexão razoável com a internet
 
-| Item | Caminho A | Caminho B | Caminho C |
-|---|---|---|---|
-| Conta no [GitHub](https://github.com/signup) | ✅ | ✅ | ✅ |
-| Git instalado | ❌ | ❌ (já vem) | ✅ ([download](https://git-scm.com/downloads)) |
-| Python 3.11+ | ❌ | ❌ (já vem) | ✅ ([download](https://www.python.org/downloads/)) |
-| Editor/IDE | ❌ (web) | ❌ (web) | ✅ ([VS Code](https://code.visualstudio.com/), [Cursor](https://cursor.com/), [Antigravity](https://antigravity.google/), [PyCharm](https://www.jetbrains.com/pycharm/)…) |
+E é só. Nenhum software instalado, nenhum Python, nenhum Git, nenhum SO específico.
 
-Os Caminhos A e B funcionam em **qualquer sistema operacional** e até em tablets ou ChromeBooks.
+> O free tier do GitHub Codespaces oferece **120 horas-core/mês** — mais que suficiente para a disciplina inteira.
 
-## 2.3. Criar o repositório no GitHub (todos os caminhos)
+## 2.2. Criar o repositório no GitHub
 
-1. Acesse <https://github.com/new>.
-2. **Repository name**: `tqs-2026` (ou nome de sua escolha).
-3. Marque como **Public** — necessário para o GitHub Pages funcionar no plano gratuito.
-4. Marque **"Add a README file"** se for usar o **Caminho A** (assim o repo já nasce inicializado e você pode editar pela web). Se for usar B ou C, deixe vazio que vamos criar tudo.
-5. **Não** marque "Add .gitignore" nem "Choose a license" — vamos criar localmente.
-6. Clique em **Create repository**.
+Acesse <https://github.com/new> e preencha o formulário:
 
----
+1. **Repository name**: `tqs-2026` (ou outro nome de sua escolha).
+2. **Description** (opcional): "Projeto da disciplina Teste e Qualidade de Software".
+3. **Visibility**: marque **Public** — isso é necessário para o GitHub Pages funcionar no plano gratuito.
+4. **Initialize this repository with**: marque **Add a README file** — assim o repositório nasce inicializado e você consegue editar pela web imediatamente.
+5. **Add .gitignore** e **Choose a license**: deixe ambos em "None" — vamos criar manualmente para entender cada arquivo.
+6. Clique no botão verde **Create repository**.
 
-## 2.4. Setup do Caminho A — Navegador puro
+Você será redirecionado para a página do seu novo repositório, com apenas o `README.md` dentro.
 
-Você não instala nada. Trabalha tudo pelo navegador.
+## 2.3. Criar o arquivo `.devcontainer/devcontainer.json`
 
-### Como criar arquivos/pastas pela interface
+Esse é o arquivo que diz ao Codespaces **qual ambiente preparar para você**: versão do Python, extensões do VS Code, dependências a instalar automaticamente, portas a expor.
 
-No repositório no GitHub:
+### Passo a passo (interface web do GitHub)
 
-1. Clique em **"Add file" → "Create new file"**.
-2. No campo de nome, digite **`src/validators.py`** — as barras (`/`) criam as pastas automaticamente.
-3. Cole o conteúdo do arquivo.
-4. Role para baixo → **"Commit changes"**.
-5. Escolha a branch (a primeira vez será a `main`; depois você vai criar branches para PRs).
+1. Na página do seu repositório, clique no botão **"Add file"** (perto do canto superior direito da lista de arquivos) → **"Create new file"**.
 
-### Atalho: github.dev (VS Code no navegador)
+2. No campo de nome de arquivo (no topo), digite **exatamente**:
 
-No seu repo no GitHub, **aperte `.`** (a tecla ponto) no teclado. Abre o **VS Code rodando no navegador**, com explorador de arquivos, edição em múltiplas abas e painel de Source Control para commits.
+   ```
+   .devcontainer/devcontainer.json
+   ```
 
-- Para criar pasta: botão direito no explorer → "New Folder".
-- Para criar arquivo: botão direito → "New File".
-- Para commit: painel de Source Control (ícone Git na barra lateral).
+   > A `/` cria automaticamente a pasta `.devcontainer/`. O ponto no início faz parte do nome (não é separador).
 
-> Limitação importante: o github.dev **não tem terminal nem execução**. Você não roda `pytest` nem `flask`. **O CI no GitHub Actions valida seu código a cada commit** — leia o capítulo 7 para entender o pipeline.
+3. Na área de edição (campo grande abaixo), **cole** o conteúdo completo a seguir:
 
-### Para encontrar `SEU-USUARIO` no código (sem grep)
+   ```json
+   {
+       "name": "TQS 2026 - Teste e Qualidade de Software",
+       "image": "mcr.microsoft.com/devcontainers/python:1-3.11",
+       "postCreateCommand": "pip install -r requirements-dev.txt || true",
+       "customizations": {
+           "vscode": {
+               "extensions": [
+                   "ms-python.python",
+                   "ms-python.vscode-pylance",
+                   "charliermarsh.ruff",
+                   "github.vscode-pull-request-github"
+               ],
+               "settings": {
+                   "python.defaultInterpreterPath": "/usr/local/bin/python",
+                   "python.testing.pytestEnabled": true,
+                   "python.testing.unittestEnabled": false,
+                   "editor.formatOnSave": true,
+                   "[python]": {
+                       "editor.defaultFormatter": "charliermarsh.ruff"
+                   }
+               }
+           }
+       },
+       "forwardPorts": [5000],
+       "portsAttributes": {
+           "5000": {
+               "label": "Flask app",
+               "onAutoForward": "notify"
+           }
+       }
+   }
+   ```
 
-Use a **barra de busca do GitHub** com filtro do repo: digite `SEU-USUARIO` na busca dentro do seu repositório. Os 2 arquivos com placeholders aparecem na lista.
+4. Role a página para baixo até a seção **"Commit changes"**.
 
----
+5. Preencha:
+   - **Commit message**: `chore: adiciona devcontainer.json para Codespaces`
+   - **Extended description** (opcional): pode deixar vazio
+   - **Commit directly to the `main` branch** — deixe selecionado
 
-## 2.5. Setup do Caminho B — GitHub Codespaces ⭐
+6. Clique no botão verde **"Commit changes"**.
 
-Esse é o caminho recomendado para a aula.
+### O que cada linha do arquivo significa
 
-### Criar o Codespace
+| Linha | Para que serve |
+|---|---|
+| `"image": ".../python:1-3.11"` | Imagem Docker oficial com Python 3.11 pré-instalado |
+| `"postCreateCommand"` | Roda automaticamente após o Codespace ser criado — aqui instala as dependências do projeto |
+| `"extensions"` | Extensões do VS Code instaladas automaticamente (Python, Pylance, Ruff, GitHub PRs) |
+| `"settings"` | Configurações do editor: testes via pytest, formatar ao salvar usando Ruff |
+| `"forwardPorts": [5000]` | Quando o Flask rodar na porta 5000, o Codespace expõe uma URL pública temporária |
 
-1. No seu repositório, clique em **"Code"** (botão verde) → aba **"Codespaces"** → **"Create codespace on main"**.
-2. Aguarde ~30 segundos. O ambiente vai abrir o **VS Code no navegador**, já com Python 3.11, Git, terminal, e todas as dependências do projeto instaladas.
-3. O arquivo [`.devcontainer/devcontainer.json`](../.devcontainer/devcontainer.json) (que já existe neste projeto) cuida da configuração automática: instala extensões (Python, Pylance, Ruff, GitHub PRs) e roda `pip install -r requirements-dev.txt`.
+> O `|| true` no `postCreateCommand` é proposital: se ainda não houver `requirements-dev.txt` no repositório (caso você esteja começando do zero), o comando falha graciosamente em vez de travar o setup.
 
-### Usar o terminal
+## 2.4. Abrir o Codespace
 
-Abra com `Ctrl + ~` (ou menu **Terminal → New Terminal**). Use exatamente os mesmos comandos que apareceriam no Linux/Mac em qualquer outro capítulo:
+Com o `devcontainer.json` commitado, agora você pode subir o ambiente.
 
-```bash
-pytest                          # rodar testes
-flask --app src.app run         # subir o Flask
-ruff check .                    # lint
-```
+1. Na página principal do repositório, clique no botão verde **"Code"**.
+2. Selecione a aba **"Codespaces"** (ao lado de "Local").
+3. Clique em **"Create codespace on main"**.
 
-### Ver o Flask no navegador
+Uma nova aba abre. Aguarde aproximadamente **1 a 2 minutos** na primeira vez (o GitHub cria o container, instala as extensões e roda o `postCreateCommand`). Você verá um **VS Code completo rodando no navegador**.
 
-Quando você rodar `flask --app src.app run`, o Codespace vai detectar a porta 5000 e mostrar um pop-up **"Open in Browser"**. Clique — abre uma URL pública temporária com o seu Flask rodando.
+### Verificar que tudo está pronto
 
-### Cota do free tier
-
-- **120 horas-core/mês** gratuitas para contas pessoais
-- Um Codespace de 2 cores consome 2 horas-core por hora de uso
-- Para a disciplina toda: dá folgadamente
-
-> **Importante**: **pare** o Codespace quando não estiver usando. Em **github.com/codespaces** você vê todos os seus Codespaces ativos e pode pará-los. Codespace parado não consome cota; só ocupa storage (também limitado).
-
----
-
-## 2.6. Setup do Caminho C — Instalação local
-
-Você roda tudo na sua máquina. Mais rápido para iterar, mas requer setup.
-
-### Clonar o repositório
-
-```bash
-git clone https://github.com/SEU-USUARIO/tqs-2026.git
-cd tqs-2026
-```
-
-Se estiver criando do zero (sem fork), no lugar acima:
-
-```bash
-mkdir tqs-2026 && cd tqs-2026
-git init -b main
-git remote add origin https://github.com/SEU-USUARIO/tqs-2026.git
-```
-
-### Criar o ambiente virtual
-
-Um **ambiente virtual** (venv) isola as dependências do projeto das outras instalações de Python.
-
-**Linux / macOS**:
+Abra o terminal: tecle **Ctrl + `** (Control + crase) — ou menu **Terminal → New Terminal**. Um terminal abre na parte inferior. Digite:
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
+python --version
 ```
 
-**Windows (PowerShell)**:
+Deve responder algo como `Python 3.11.x`. Se aparecer, o ambiente está pronto.
 
-```powershell
-python -m venv .venv
-.venv\Scripts\Activate.ps1
-```
+## 2.5. Trabalhando com Codespaces no dia a dia
 
-**Windows (CMD)**:
+### Como parar e retomar
 
-```cmd
-python -m venv .venv
-.venv\Scripts\activate.bat
-```
+- **Para parar** (e economizar cota): vá em <https://github.com/codespaces>, encontre o Codespace na lista e clique nos três pontinhos (`···`) → **"Stop codespace"**. Isso preserva todos os seus arquivos.
+- **Para retomar**: na mesma lista, clique no nome do Codespace. Ele acorda em ~10 segundos, exatamente como você deixou (arquivos abertos, terminal, tudo).
+- Codespace **parado não consome cota** — só ocupa um pouco de storage (também limitado e generoso).
 
-Você saberá que o ambiente está ativo quando o prompt do terminal mostrar `(.venv)` no início.
+### Atalhos úteis do VS Code
 
-### Instalar dependências
+| Atalho | O que faz |
+|---|---|
+| `Ctrl + `\` | Abre/foca o terminal |
+| `Ctrl + Shift + P` | Paleta de comandos (qualquer ação) |
+| `Ctrl + P` | Abrir arquivo pelo nome |
+| `Ctrl + Shift + F` | Busca global no projeto |
+| `Ctrl + S` | Salvar (formato automático ativa aqui) |
+
+### O que NÃO mudou entre Codespaces e máquina local
+
+Os comandos de terminal são **exatamente os mesmos** que você usaria em uma máquina Linux. Todos os exemplos nos próximos capítulos rodam aqui sem ajuste nenhum:
 
 ```bash
-pip install -r requirements-dev.txt
+pytest                              # roda testes
+flask --app src.app run             # sobe o Flask
+ruff check .                        # lint
+git checkout -b feat/nova-feature   # cria branch
 ```
 
-### Criar estrutura de pastas (somente se criando do zero)
+## 2.6. Estrutura final do repositório
 
-**Linux / macOS**:
-
-```bash
-mkdir -p .github/workflows .github/ISSUE_TEMPLATE src/templates tests docs
-```
-
-**Windows (PowerShell)**:
-
-```powershell
-New-Item -ItemType Directory -Force -Path .github\workflows, .github\ISSUE_TEMPLATE, src\templates, tests, docs
-```
-
-> 💡 No VS Code (qualquer SO), você pode criar pastas pela interface: botão direito no explorer → **New Folder**. Funciona igual em Windows, Mac e Linux. É a forma mais portável.
-
----
-
-## 2.7. Estrutura final do repositório
-
-Independente do caminho, ao final deste livro seu repositório terá:
+Ao final desta disciplina, seu repositório terá esta estrutura:
 
 ```
 tqs-2026/
 ├── .devcontainer/
-│   └── devcontainer.json           # config do Codespaces (Caminho B)
+│   └── devcontainer.json           # config do Codespaces (criado neste capítulo)
 ├── .github/
 │   ├── workflows/
 │   │   ├── ci.yml                  # lint + testes + cobertura
@@ -189,7 +172,7 @@ tqs-2026/
 │   └── CODEOWNERS                  # quem revisa o quê
 ├── capitulos/                      # este livro didático
 ├── src/
-│   ├── validators.py               # VERSÃO PRINCIPAL da lógica de validação
+│   ├── validators.py               # VERSÃO PRINCIPAL da lógica
 │   ├── app.py                      # rotas Flask
 │   └── templates/index.html        # formulário renderizado pelo Flask
 ├── tests/
@@ -205,21 +188,22 @@ tqs-2026/
 └── README.md                       # sumário do livro
 ```
 
-## 2.8. Personalizações antes do primeiro `push`
+> **De onde vêm esses arquivos?** Os próximos capítulos explicam **o que cada um faz** e o [capítulo 10](10-atividade-pratica.md) traz **código pronto** para você criar/modificar via interface do VS Code dentro do Codespace. Alternativamente, seu professor pode disponibilizar o repositório-modelo já populado para você fazer **fork** — pergunte na primeira aula.
 
-Se você está usando este projeto a partir de um **fork** (ou copiou os arquivos), há **dois lugares** com placeholders para trocar pelo seu usuário do GitHub:
+## 2.7. Personalizações antes do primeiro `push`
+
+Se você partiu de um **fork** do repositório-modelo (em vez do passo 2.2), há **dois lugares** com placeholders para trocar pelo seu usuário do GitHub:
 
 - [`docs/index.html`](../docs/index.html) — no rodapé, troque `SEU-USUARIO` na URL `https://github.com/SEU-USUARIO/tqs-2026` pelo seu usuário.
 - [`.github/CODEOWNERS`](../.github/CODEOWNERS) — descomente a linha `# * @SEU-USUARIO` e troque pelo seu usuário.
 
-**Como encontrar todas as ocorrências**:
+No terminal do Codespace, para encontrar todas as ocorrências:
 
-| Caminho | Como buscar |
-|---|---|
-| A (navegador) | Use a barra de busca do GitHub no seu repo, digite `SEU-USUARIO` |
-| B (Codespaces) ou C (local) | No terminal: `grep -rn "SEU-USUARIO" .` |
+```bash
+grep -rn "SEU-USUARIO" .
+```
 
-Faça as substituições, confira que a busca não retorna mais nada, e só então faça o `push`.
+Faça as substituições, confira que o `grep` não retorna mais nada, faça commit e push.
 
 > Os outros lugares com o nome do professor (LICENSE, README, pyproject.toml) são de **autoria** do material didático e devem ficar como estão — quando você forka, herda a licença MIT e o crédito do autor original.
 

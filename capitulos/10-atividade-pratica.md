@@ -8,7 +8,7 @@ Você leu os capítulos anteriores — agora é hora de **fazer**. Este capítul
 
 > **Por que dou o código pronto?** O objetivo desta atividade **não é** você reinventar o algoritmo do CNPJ. O objetivo é praticar o **workflow do Pull Request**: criar branch, commit a cada passo do TDD, abrir PR com template, ver o CI, fazer code review. Esse é o conjunto de habilidades que se transfere para qualquer projeto na sua carreira.
 
-> 🌐 **Trabalhando pelo navegador? (Caminho A do capítulo 2)** Todos os comandos `git` deste capítulo têm equivalente na interface web. Veja o mapeamento na **[seção 10.8 — Equivalências para o Caminho A](#108-equivalências-para-o-caminho-a-navegador-puro)** ao final do capítulo, e volte aqui.
+> 💻 **Todos os comandos deste capítulo rodam no terminal do Codespace** que você abriu no [capítulo 2](02-preparando-ambiente.md). Se ainda não tem o Codespace aberto, volte e abra antes de seguir.
 
 ## Roteiro do capítulo
 
@@ -645,30 +645,6 @@ Cada tarefa de PR deve virar **um PR separado** no seu fork (ou repositório pes
 - [ ] PR seguindo o template
 - [ ] CI verde
 - [ ] Pelo menos uma auto-revisão (comentários do próprio autor explicando decisões)
-
----
-
-## 10.8. Equivalências para o Caminho A (navegador puro)
-
-Se você escolheu o **Caminho A** no [capítulo 2](02-preparando-ambiente.md#21-três-caminhos-possíveis), não tem terminal e não roda `git` na linha de comando. Use a interface web do GitHub:
-
-| Ação no terminal | Equivalente na interface web do GitHub |
-|---|---|
-| `git checkout -b feat/X` | No repo: dropdown de branches (acima da lista de arquivos) → digite `feat/X` → clique em **"Create branch: feat/X from main"** |
-| Editar um arquivo | Clique no arquivo → ícone de **lápis** (canto superior direito) |
-| Criar um arquivo novo | Botão **"Add file" → "Create new file"** → digite o caminho completo (ex: `src/validators.py`); as `/` criam pastas |
-| Apagar trecho de código | Edite o arquivo pelo lápis e remova as linhas |
-| `git add` + `git commit -m "..."` | Após editar, role para baixo até **"Commit changes"**, escreva a mensagem, escolha a branch e clique em **"Commit changes"** |
-| `git push` | **Automático** — quando você commita pela web, o commit já vai direto para o GitHub (não existe "local" no Caminho A) |
-| `pytest` | **O CI no GitHub Actions** roda automaticamente a cada push/PR — veja o status na aba **"Actions"** ou diretamente no PR |
-| Abrir PR | Após criar a branch, vá na aba **"Pull requests"** → **"New pull request"** → escolha sua branch como **compare** |
-
-**Atalho útil**: aperte `.` (ponto) em qualquer página do repositório no GitHub para abrir o **github.dev** (VS Code no navegador) — mais confortável para editar múltiplos arquivos. Lá você tem explorer, abas, busca global (`Ctrl+Shift+F`) e painel de Source Control para commits.
-
-### Para os exercícios deste capítulo
-
-- **Demonstração 10.1 e Tarefas 10.2, 10.3**: faça os "commits" um por um pela interface web (a mesma branch recebe vários commits). Para a Tarefa 10.3 (quebrar CI), você cria a branch, edita o arquivo, commita um erro de sintaxe, e abre PR — tudo pela web.
-- **Tarefa 10.5 (mutation testing)**: precisa de terminal. Use Codespaces (Caminho B) ou peça a um colega para rodar.
 
 ---
 

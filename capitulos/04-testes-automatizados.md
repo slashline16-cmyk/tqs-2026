@@ -136,12 +136,12 @@ A coluna `Missing` aponta as linhas **não exercitadas** pelos testes. As linhas
 
 ```bash
 pytest --cov=src --cov-report=html
-open htmlcov/index.html             # Mac
-# xdg-open htmlcov/index.html       # Linux
-# start htmlcov/index.html          # Windows
+python -m http.server 8000 -d htmlcov
 ```
 
-Abre uma página onde você pode clicar em cada arquivo e ver as linhas cobertas (verde) e descobertas (vermelho).
+O Codespace vai detectar a porta 8000 e mostrar um pop-up para abrir no navegador. Uma página abre listando os arquivos cobertos — clique em qualquer um para ver linhas cobertas (verde) e descobertas (vermelho).
+
+Para parar o servidor HTTP: `Ctrl + C` no terminal.
 
 ## 4.10. Meta de cobertura neste projeto
 

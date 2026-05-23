@@ -4,13 +4,11 @@
 
 ---
 
-Com o ambiente preparado, vamos colocar a aplicação Flask no ar para entender o que estamos testando. Este capítulo é prático e curto.
-
-> 🌐 **Está no Caminho A (navegador puro)?** Você **não vai rodar o Flask** — esse caminho não tem terminal. Pule direto para a [seção 3.4](#34-o-que-está-acontecendo-por-trás) (diagrama do fluxo) e depois acesse o **demo deployado no GitHub Pages** que tem o mesmo formulário (capítulo 8 ensina a ativar). Se quiser rodar localmente, troque para o **Caminho B (Codespaces)** ou C.
+Com o Codespace aberto, vamos colocar a aplicação Flask no ar para entender o que estamos testando. Este capítulo é prático e curto.
 
 ## 3.1. Instalar as dependências
 
-Com o ambiente virtual ativo (você deve ver `(.venv)` no prompt):
+Quando o Codespace foi criado, o `postCreateCommand` do `devcontainer.json` já tentou rodar `pip install -r requirements-dev.txt` automaticamente. Se naquele momento o arquivo de dependências ainda não existia, rode agora manualmente no terminal do Codespace:
 
 ```bash
 pip install -r requirements-dev.txt
@@ -31,7 +29,11 @@ Você verá algo como:
  * Running on http://127.0.0.1:5000
 ```
 
-Abra <http://localhost:5000> no navegador. Você verá o formulário com dois campos (CPF e e-mail) e um botão "Validar".
+O Codespace detecta a porta 5000 e exibe um pop-up no canto inferior direito do VS Code: **"Your application running on port 5000 is available"** com botões **"Open in Browser"** e **"Make Public"**. Clique em **"Open in Browser"** — uma nova aba abre com uma URL temporária (algo como `https://seu-codespace-5000.app.github.dev`) servindo seu Flask.
+
+Você verá o formulário com dois campos (CPF e e-mail) e um botão "Validar".
+
+> Se perdeu o pop-up, veja a aba **PORTS** no painel inferior do VS Code (ao lado de TERMINAL): a porta 5000 aparece lá com um ícone de globo para abrir no navegador.
 
 ## 3.3. Testar manualmente
 

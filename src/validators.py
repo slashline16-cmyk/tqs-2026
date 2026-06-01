@@ -72,4 +72,5 @@ def validar_telefone(telefone: str | None) -> bool:
         return False
     return apenas_digitos[2] == "9"
 
-#teste branch protection
+
+# teste branch protection

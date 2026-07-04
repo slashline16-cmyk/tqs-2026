@@ -242,10 +242,10 @@ A página principal do demo público. Contém o formulário e o JavaScript que c
 
     <div id="resultado"></div>
 
-    <!-- TODO: substitua SEU-USUARIO pelo seu nome de usuário no GitHub -->
+    <!-- TODO: substitua slashline16-cmyk pelo seu nome de usuário no GitHub -->
     <footer>
         Projeto-exemplo da disciplina &middot;
-        <a href="https://github.com/SEU-USUARIO/tqs-2026">código-fonte no GitHub</a>
+        <a href="https://github.com/slashline16-cmyk/tqs-2026">código-fonte no GitHub</a>
     </footer>
 
     <script type="module">
@@ -274,7 +274,7 @@ A página principal do demo público. Contém o formulário e o JavaScript que c
 
 3. Salve.
 
-> ⚠️ Antes de fazer o push final, **lembre de trocar `SEU-USUARIO`** no rodapé pela sua conta do GitHub. O capítulo 9 vai consolidar todas as personalizações do tipo num único checklist.
+> ⚠️ Antes de fazer o push final, **lembre de trocar `slashline16-cmyk`** no rodapé pela sua conta do GitHub. O capítulo 9 vai consolidar todas as personalizações do tipo num único checklist.
 
 ## 8.7. Criar o workflow `deploy.yml`
 
@@ -396,7 +396,7 @@ A partir desse momento, o próximo push para `main` dispara o `deploy.yml` e pub
 Volte na aba **Actions** do seu repositório e veja o workflow **"Deploy GitHub Pages"** rodando. Quando ficar verde (~1-2 min), uma URL aparece no resultado do job `deploy`: algo como
 
 ```
-https://SEU-USUARIO.github.io/tqs-2026/
+https://slashline16-cmyk.github.io/tqs-2026/
 ```
 
 Abra a URL no navegador. Você deve ver:

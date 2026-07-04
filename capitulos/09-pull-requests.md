@@ -205,11 +205,11 @@ Esse arquivo define **quem é automaticamente atribuído como revisor** de cada 
 # CODEOWNERS — define quem é atribuído automaticamente como revisor dos PRs.
 #
 # A regra abaixo está COMENTADA de propósito: o template não sabe qual é o seu
-# usuário do GitHub. Descomente e troque SEU-USUARIO pelo seu nome de usuário
+# usuário do GitHub. Descomente e troque slashline16-cmyk pelo seu nome de usuário
 # para ativar a atribuição automática.
 #
 # Exemplo:
-#   * @SEU-USUARIO
+#   * @slashline16-cmyk
 #
 # Em projetos maiores, você pode dividir por pasta:
 #   src/auth/   @time-de-seguranca
@@ -218,21 +218,21 @@ Esse arquivo define **quem é automaticamente atribuído como revisor** de cada 
 
 3. Salve.
 
-> Por que comentado? Se você deixar `* @SEU-USUARIO` ativo sem trocar, o GitHub tenta atribuir um usuário inexistente e ignora silenciosamente. Mantendo comentado, **nenhum revisor é atribuído** até você descomentar com seu usuário real.
+> Por que comentado? Se você deixar `* @slashline16-cmyk` ativo sem trocar, o GitHub tenta atribuir um usuário inexistente e ignora silenciosamente. Mantendo comentado, **nenhum revisor é atribuído** até você descomentar com seu usuário real.
 
 ## 9.6. Personalizações finais antes do `push`
 
-Agora que todos os arquivos foram criados, há **dois lugares** com o placeholder `SEU-USUARIO` que você precisa trocar pelo seu usuário real do GitHub:
+Agora que todos os arquivos foram criados, há **dois lugares** com o placeholder `slashline16-cmyk` que você precisa trocar pelo seu usuário real do GitHub:
 
 | Arquivo | Linha | O que trocar |
 |---|---|---|
-| [`docs/index.html`](../docs/index.html) (criado no cap 8) | rodapé | `https://github.com/SEU-USUARIO/tqs-2026` → seu link real |
-| [`.github/CODEOWNERS`](../.github/CODEOWNERS) (este capítulo) | comentário | Descomentar `# * @SEU-USUARIO` e trocar pelo seu usuário |
+| [`docs/index.html`](../docs/index.html) (criado no cap 8) | rodapé | `https://github.com/slashline16-cmyk/tqs-2026` → seu link real |
+| [`.github/CODEOWNERS`](../.github/CODEOWNERS) (este capítulo) | comentário | Descomentar `# * @slashline16-cmyk` e trocar pelo seu usuário |
 
 **Como encontrar todas as ocorrências no terminal do Codespace**:
 
 ```bash
-grep -rn "SEU-USUARIO" .
+grep -rn "slashline16-cmyk" .
 ```
 
 Faça as substituições nos dois arquivos (clique no arquivo no Explorer, troque o texto, salve), rode o `grep` de novo para confirmar que retorna vazio.

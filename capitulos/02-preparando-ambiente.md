@@ -188,7 +188,7 @@ Você está com um Codespace aberto, um terminal funcionando e um repositório q
 
 A partir daqui você tem **dois caminhos**:
 
-1. **Forkar o repositório-modelo do professor** (caminho ideal para quem só quer rodar) — você herda todos os arquivos prontos e pode pular para o [capítulo 10](10-atividade-pratica.md) direto. Quando for forkar, lembre de configurar o Codespace no seu fork e ajustar os placeholders `SEU-USUARIO` (instruções no fim do capítulo 9).
+1. **Forkar o repositório-modelo do professor** (caminho ideal para quem só quer rodar) — você herda todos os arquivos prontos e pode pular para o [capítulo 10](10-atividade-pratica.md) direto. Quando for forkar, lembre de configurar o Codespace no seu fork e ajustar os placeholders `slashline16-cmyk` (instruções no fim do capítulo 9).
 
 2. **Construir cada arquivo seguindo os próximos capítulos** (caminho desta disciplina) — você cria todas as pastas e arquivos pela interface do VS Code, copia o código que o livro fornece, e entende exatamente para que cada peça serve.
 

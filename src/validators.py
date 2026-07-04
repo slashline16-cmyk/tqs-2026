@@ -9,6 +9,7 @@ import re
 _REGEX_EMAIL = re.compile(r"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$")
 
 
+
 def _calcular_digito_verificador(digitos: str, peso_inicial: int) -> int:
     pesos = range(peso_inicial, 1, -1)
     soma = sum(int(d) * peso for d, peso in zip(digitos, pesos, strict=True))
@@ -32,7 +33,6 @@ def validar_cpf(cpf: str | None) -> bool:
     segundo = _calcular_digito_verificador(apenas_digitos[:10], peso_inicial=11)
 
     return apenas_digitos[9] == str(primeiro) and apenas_digitos[10] == str(segundo)
-
 
 def validar_email(email: str | None) -> bool:
     if not isinstance(email, str) or not email:
